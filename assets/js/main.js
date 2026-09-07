@@ -266,12 +266,4 @@
    */
   new PureCounter();
 
-})()
-
-// Contoh penempatan di dalam assets/js/main.js
-if (window.innerWidth > 991) {
-  // Masukkan kode listener mousemove Anda di sini
-  document.addEventListener('mousemove', (e) => {
-    // ... logika pergerakan blur/aura mengikuti mouse ...
-  });
-}
+})();
