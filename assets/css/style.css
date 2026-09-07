@@ -1616,3 +1616,20 @@ body { font-family: "Plus Jakarta Sans", sans-serif; }
     display: block !important;
   }
 }
+
+/* ==========================================================
+   PERFORMANCE OPTIMIZATION FOR MOBILE (FIX LAGGY SCROLL)
+   ========================================================== */
+@media (max-width: 767.98px) {
+  /* 1. Matikan efek blur berat yang membebani GPU HP */
+  .mobile-nav-toggle, 
+  .hero-availability {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* 2. Hindari animasi atau transisi global yang memberatkan */
+  * {
+    -webkit-font-smoothing: antialiased;
+  }
+}
