@@ -1618,18 +1618,66 @@ body { font-family: "Plus Jakarta Sans", sans-serif; }
 }
 
 /* ==========================================================
-   PERFORMANCE OPTIMIZATION FOR MOBILE (FIX LAGGY SCROLL)
+   FIX HERO VISUAL POSITION ON MOBILE (NOT TOO LOW)
    ========================================================== */
-@media (max-width: 767.98px) {
-  /* 1. Matikan efek blur berat yang membebani GPU HP */
-  .mobile-nav-toggle, 
-  .hero-availability {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+@media (max-width: 991.98px) {
+  /* 1. Hentikan layout loop penyebab ngelag tapi pertahankan struktur */
+  #hero {
+    height: auto !important;
+    min-height: 100vh !important;
+  }
+  
+  #hero .hero-shell,
+  #hero .hero-container {
+    height: auto !important;
+    min-height: unset !important;
   }
 
-  /* 2. Hindari animasi atau transisi global yang memberatkan */
-  * {
-    -webkit-font-smoothing: antialiased;
+  #hero .hero-container {
+    padding-top: 100px !important;
+    padding-bottom: 50px !important;
+  }
+
+  /* 2. Kembalikan posisi foto agar tidak terlalu ke bawah, tetap proporsional */
+  #hero .hero-visual {
+    position: relative !important;
+    width: 100% !important;
+    height: 280px !important; /* Batasi tinggi area foto di HP agar pas */
+    left: auto !important;
+    transform: none !important;
+    margin-top: 20px !important;
+  }
+
+  #hero .hero-photo {
+    height: 100% !important;
+    max-height: 280px !important;
+    object-position: center top !important;
+    opacity: 0.85 !important; /* Agar lebih jelas tapi tetap ringan */
+  }
+}
+
+/* ==========================================================
+   OPTIMASI ANTI-LAG / ANTI-PANAS KHUSUS MOBILE
+   ========================================================== */
+@media (max-width: 991.98px) {
+  /* Matikan efek blur berat yang bikin GPU HP kerja keras */
+  .mobile-nav-toggle {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #ffffff !important;
+  }
+
+  /* Matikan bayangan kompleks di card */
+  .services .icon-box,
+  .facts .count-box,
+  .portfolio .portfolio-wrap {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Matikan animasi AOS di HP jika masih berat */
+  [data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
