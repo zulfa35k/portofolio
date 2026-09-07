@@ -266,57 +266,12 @@
    */
   new PureCounter();
 
-  /**
-   * ==========================================
-   * Hero Aura Smooth Parallax Animation
-   * ==========================================
-   */
-  const heroAura = select('.hero-aura');
-  if (heroAura) {
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
-
-    // Mendeteksi pergerakan mouse dari posisi tengah layar
-    document.addEventListener('mousemove', function(e) {
-      mouseX = (window.innerWidth / 2 - e.pageX) / 30;
-      mouseY = (window.innerHeight / 2 - e.pageY) / 30;
-    });
-
-    // Menjalankan animasi requestAnimationFrame untuk transisi super halus
-    function animateAura() {
-      // Easing untuk membuatnya bergerak pelan
-      currentX += (mouseX - currentX) * 0.05;
-      currentY += (mouseY - currentY) * 0.05;
-      
-      // Menggabungkan translasi (-50% ke tengah) dari CSS base dan gerakan mouse (X & Y)
-      heroAura.style.transform = `translate(calc(-50% + ${currentX}px), ${currentY}px)`;
-      
-      requestAnimationFrame(animateAura);
-    }
-    
-    // Inisiasi awal frame rate animasi
-    animateAura();
-  }
-
 })()
 
-/**
-   * ==========================================
-   * Hero Aura Parallax (Berlawanan Arah & Sangat Jauh)
-   * ==========================================
-   */
-  const heroAura = select('.hero-aura');
-  if (heroAura) {
-    document.addEventListener('mousemove', function(e) {
-      // (window.innerWidth / 2 - e.clientX) membuat gerakan BERLAWANAN arah dengan mouse
-      // Dibagi dengan 0.4 (angka di bawah 1) agar jarak gesernya teramplifikasi menjadi sangat jauh
-      let mouseX = (window.innerWidth / 2 - e.clientX) / 0.4;
-      let mouseY = (window.innerHeight / 2 - e.clientY) / 0.4;
-      
-      // Diterapkan secara real-time
-      heroAura.style.setProperty('--mouse-x', mouseX + 'px');
-      heroAura.style.setProperty('--mouse-y', mouseY + 'px');
-    });
-  }
+// Contoh penempatan di dalam assets/js/main.js
+if (window.innerWidth > 991) {
+  // Masukkan kode listener mousemove Anda di sini
+  document.addEventListener('mousemove', (e) => {
+    // ... logika pergerakan blur/aura mengikuti mouse ...
+  });
+}
