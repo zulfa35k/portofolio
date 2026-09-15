@@ -1050,25 +1050,23 @@ body { font-family: "Plus Jakarta Sans", sans-serif; }
   transform: translateY(-3px);         /* Efek melayang halus */
 }
 
-/*--------------------------------------------------------------
-# Blur Aura Styling & Animation (Stabil / Tanpa Efek Mouse)
---------------------------------------------------------------*/
 #hero .hero-aura {
   position: absolute;
-  bottom: -15%;       
-  left: 50%;
-  transform: translateX(-50%);
-  width: 140%;
-  max-width: 900px;
+  right: -5%;            /* Digeser sedikit ke kanan agar jangkauannya lebih luas */
+  bottom: -20px;         /* Diturunkan sedikit agar posisinya pas di bawah */
+  width: 720px;          /* Ukuran diperbesar dari 530px menjadi 720px */
+  max-width: 60vw;       /* Batas maksimal lebar layar diperbesar */
+  height: auto;
   z-index: 0;
   pointer-events: none;
-  
-  opacity: 0.85; 
-  filter: drop-shadow(0 0 50px rgba(5, 99, 187, 0.3)); 
-  
+  opacity: 0.95;         /* Kepekatan ditambah sedikit agar lebih menyala */
   animation: auraPulse 7s ease-in-out infinite alternate;
 }
 
+@keyframes auraPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  100% { transform: scale(1.05); opacity: 0.95; }
+}
 /* Transparansi khusus versi Tablet & Mobile */
 @media (max-width: 991.98px) {
   #hero .hero-aura {
